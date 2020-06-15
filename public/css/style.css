@@ -363,8 +363,8 @@ form .btn-primary {
     margin-top: 40px;
     margin-bottom: 50px;
     max-height:1000px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    /* overflow-y: auto;
+    overflow-x: hidden; */
     
 }
 .produtos{
