@@ -1,0 +1,201 @@
+<%- include('./partials/header') %>
+
+
+    <main class="container cliente">
+        <h1>Minha conta</h1>
+
+        <% if(!pedidos.length < 1) {%>
+
+          <% pedidos.forEach(element => {%> 
+
+
+        <h2>Pedidos</h2>
+        <div class="row">
+            <h3>Nº Pedido</h3>
+            <mark><%= element.id_pedido %></mark>
+            <h3>Valor total:</h3>
+            <p>R$ <%= element.valor_total_pedido %>,00</p>
+            <h3>Status:</h3>
+            <p>Analisando</p>
+        </div>
+        <hr>
+        
+        <% }); %>
+
+        <% } %>
+        <h2 id="viacep">Endereço</h2>
+        <form action="/clienteE" method="POST">
+            <div class="row">
+
+              <% if(enderecoDb.length < 1) {%>
+
+                <div class="col-5">
+                  <label for="cep">Cep:</label>
+                  <input type="text" class="form-control" id="cep" name="cep" value="" size="10" maxlength="9"
+                  onblur="pesquisacep(this.value);" >
+                </div>
+  
+                <div class="col-5">
+                  <label for="Rua">Rua:</label>
+                  <input type="text" class="form-control rua" id="rua" placeholder="Rua" name="logradouro"readonly>
+                </div>
+  
+                  <div class="col-5 estado">
+                      <label for="estado">Estado</label>
+                      <input type="text" class="form-control" id="uf" placeholder="Estado" name="uf" readonly>
+                  </div>
+  
+                  <div class="col-5">
+                      <label for="cidade">Cidade:</label>
+                      <input type="text" class="form-control cidade" id="cidade" placeholder="Cidade" name="cidade" readonly>
+                  </div>
+                  <div class="col-5">
+                    <label for="cidade">Bairro:</label>
+                    <input type="text" class="form-control" id="bairro" placeholder="Bairro" name="bairro" readonly>
+                </div>
+                  <div class="col-5">
+                    <label for="cidade">Numero:</label>
+                    <input type="text" class="form-control" id="numero" placeholder="Digite seu numero" name="numero">
+                </div>
+                <div class="col-5">
+                  <label for="Complemento">Complemento:</label>
+                  <input type="text" class="form-control" id="complemento" placeholder="Digite seu complemento" name="complemento">
+                </div>
+
+
+                <% }else { %>
+
+
+                  <% enderecoDb.forEach(element => {%> 
+
+
+              <div class="col-5">
+                <label for="cep">Cep:</label>
+                <input type="text" class="form-control" id="cep" name="cep" maxlength="8" value="<%= element.cep %>" placeholder="<%= element.cep %>" onblur="pesquisacep(this.value);" >
+              </div>
+
+              <div class="col-5">
+                <label for="Rua">Rua:</label>
+                <input type="text" class="form-control rua" id="rua" value="<%= element.logradouro %>" placeholder="<%= element.logradouro %>" name="logradouro"readonly>
+              </div>
+
+                <div class="col-5 estado">
+                    <label for="estado">Estado</label>
+                    <input type="text" class="form-control" id="uf" placeholder="<%= element.uf %>" value="<%= element.uf %>" name="uf" readonly>
+                </div>
+
+                <div class="col-5">
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" class="form-control cidade" id="cidade" value="<%= element.cidade %>" placeholder="<%= element.cidade %>" name="cidade" readonly>
+                </div>
+                <div class="col-5">
+                  <label for="cidade">Bairro:</label>
+                  <input type="text" class="form-control" id="bairro" placeholder="<%= element.bairro %>" value="<%= element.bairro %>" name="bairro" readonly>
+              </div>
+                <div class="col-5">
+                  <label for="cidade">Numero:</label>
+                  <input type="text" class="form-control" id="numero" placeholder="<%= element.numero %>" value="<%= element.numero %>" name="numero">
+              </div>
+              <div class="col-5">
+                <label for="Complemento">Complemento:</label>
+                <input type="text" class="form-control" id="complemento" placeholder="<%= element.complemento %>" value="<%= element.complemento %>" name="complemento">
+              </div>
+              <% }); %>
+
+              <% } %>
+
+
+
+                <button type="submit">Atualizar endereço</button>
+
+            </div>   
+        </form>
+
+        <hr class="hr">
+            <!-- <h2>Cartões</h2>
+            <form>
+                <div class="row">
+                    <div class="col-5">
+                    <label for="numero-cartao">Digite o nome do seu cartão:</label>
+                    <input type="text" class="form-control cartao-number" id="formGroupExampleInput" name="numero-cartao" OnKeyPress="formatar('####-####-####-####', this)" placeholder="Digite o numero do seu cartão" maxlength="16">
+                    </div>
+                
+                    <div class="col-5">
+                    <label for="nome-titular">Nome do titular:</label>
+                    <input type="text" class="form-control nome-titular" id="formGroupExampleInput" placeholder="Digite o nome impresso no cartão" name="nome-titular">
+                    </div>
+    
+                    <div class="col-5">
+                        <label for="validade">Validade:</label>
+                        <input type="text" class="form-control cep" id="formGroupExampleInput" name="validae" maxlength="4"  placeholder="_ _ / _ _">
+                    </div>
+
+                    <div class="col-5 validade">
+                        <label for="validade">CVV:</label>
+                        <input type="text" class="form-control cep" id="formGroupExampleInput" name="validae" maxlength="3"  placeholder="Digite o codigo">
+                    </div>
+                    <button type="button">Adicionar mais de um cartão</button>
+                </div>
+            </form>
+
+            <hr class="hr"> -->
+
+            <h2>Meu cadastro</h2>
+            <form action="/clienteC" method="POST">
+            <div class="form-row">
+                  <div class="col-5">
+                    <label for="inputEmail4">Email:</label>
+                    <input name="email" type="email" class="form-control email" id="inputEmail4" placeholder="Email" value="<%= usuario.email %>" readonly>
+                  </div>
+                  <div class="col-5">
+                    <label for="inputPassword4">Senha:</label>
+                    <input type="password" class="form-control" id="inputPassword4" placeholder="Senha" readonly name="password">
+                  </div>
+                      <div class="col-5">
+                        <label for="inputEmail4">CPF:</label>
+                        <input type="text" class="form-control CPF" id="inputEmail4" placeholder="CPF" value="<%= usuario.CPF %>" name="CPF">
+                      </div>
+                      <div class="col-5">
+                        <label for="inputPassword4">Nome completo:</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Nome completo" value="<%= usuario.nome %>" name="nome">
+                      </div>
+                      <div class="col-5 nasc">
+                        <label for="inputPassword4">Data de nascimento:</label>
+                        <input type="date" class="form-control" id="inputPassword4" placeholder="DD/MM/AAAA" value="<%= usuario.nascimento %>" name="nascimento" required>
+                      </div>
+                      <div class="sexo">
+                          <div class="col">
+                              <label for="sexo">Qual seu sexo:</label>
+                              <br>
+                                <% if(usuario.sexo = 1){ %>
+                                  <input type="checkbox" name="sexo" value="1" class="form-check-input"  checked><label class="form-check-label">Masculino</label>
+                                <% }else { %>
+                                  <input type="checkbox" name="sexo" value="0" class="form-check-input"><label class="form-check-label">Feminino</label>
+                                <% } %>
+                              <br>
+                                <% if(usuario.sexo == 0){ %>
+                                  <input type="checkbox" name="sexo" value="1" class="form-check-input"  checked><label class="form-check-label">Masculino</label>
+                                <% }else { %>
+                                  <input type="checkbox" name="sexo" value="0" class="form-check-input"><label class="form-check-label">Feminino</label>
+                                <% } %>
+                          </div>
+                      </div>
+                      <div class="col sexo">
+                          <h5>Gostaria de assinar nosso newlestter?</h5>
+                        <input type="checkbox" class="form-check-input" id="newlester" name="ofertas" value="1">
+                        <label class="form-check-label" for="newlester">Sim</label>
+                      </div>
+                </div>
+                
+                <div class="col sexo">
+                  <label class="form-check-label" for="vendas">Se for comerciante ou professor e queira utilizar nossa plataforma do e-commerce diga sim, e iremos enviar um email  solicitando suas comprovações que irão para analise:</label>
+                  <br>
+                  <input type="checkbox" class="form-check-input" id="vendas" value="1" name="vendedor">
+                        <label class="form-check-label" for="vendas">Sim</label>
+                </div>                 
+                <button type="submit" class="atualizar">Atualizar cadastro</button>
+
+              </form>
+    
+    </main>
+    <%- include('./partials/footer') %>

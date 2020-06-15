@@ -1,0 +1,1 @@
+SELECT * FROM learning_map.pedido;

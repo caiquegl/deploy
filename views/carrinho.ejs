@@ -1,0 +1,85 @@
+<%- include('./partials/header') %>
+
+    <main class="container carrinho">
+        <div id="carrinho">
+            <h1 class="titulo-carrinho">Carrinho de Compras</h1>
+
+            <!-- intens no carrinho-->
+            <% carrinho.forEach(element => {%> 
+
+
+            <div class="row">
+                <img src="./foto/<%= element.foto_produto %>" alt="Produto">
+                <div class="text">
+                    <H1><STRONG><%= element.nome_produto %>.</STRONG></H1>
+                    <h2>Em estoque</h2>
+                    <h2>Elegível para Frete GRÁTIS</h2>
+                    <h3>Este pedido é para presente ? <input type="checkbox" class="check"><b>Sim </b></h2>
+                        <div class="quant">
+                            <p><mark>Quant.</mark> <mark> <%= element.quantidade_produto %> </mark></p>
+                        </div>
+
+                        
+                        
+                        
+                </div>
+                <div class="valores">
+                    <p>Valor Unitario: <b>R$ <%= element.valor_produto %>,00</b></p>
+                    <hr>
+                    <p>Desconto: <b>0%</b></p>
+                    <hr>
+                    <p>Valor Total: <b>R$ <%= element.valor_total_produto %>,00</b></p>
+                </div>
+                <form action="/carrinho" method="post">
+                    <input type="text" value="<%= element.id_produto %>" style="display: none;" readonly name="id_produto">
+                    <button class="remove_carrinho" type="submit" >Remover do carrinho</button>
+                  </form>
+                <hr>
+                
+            </div>
+            <% }) %>
+            <!-- finaliza item-->
+
+            
+
+            
+
+            <!-- finaliza item-->
+
+            <div class="row">
+                
+                <div class="p">
+                    <p>Valor do frete fixo: <strong>R$20,00</strong></p>
+                </div>
+                <div class="total">
+                    <p>Valor total do pedido: <strong>R$<%= soma + 20 %>,00</strong></p>
+                </div>
+
+                <form action="cupom" method="post">
+                    <label for="cupom">Digite seu codigo do cupom:</label>
+                    <input type="text" name="cupom" maxlength="8" OnKeyPress="formatar('#####-###', this)"
+                        placeholder="Digite seu cupom">
+                    <button type="submit">Aplicar</button>
+                </form>
+                <a href="finalizar"><button type="submit" class="btn-carrinho">Finalizar pedido </button></a>
+            </div>
+
+        </div>
+        <!-- Finaliza carrinho-->
+    </main>
+
+    <div class="container regras">
+        <div>
+            <p>O preço e a disponibilidade dos produtos estão sujeitos a alterações. O carrinho de compras é um local
+                temporário para armazenar uma lista de seus produtos e reflete o preço mais atualizado de cada um deles.
+            </p>
+
+            <p>Você tem um cartão-presente ou um código promocional? Solicitaremos que você insira seu código de
+                reivindicação quando for a hora de pagar.</p>
+        </div>
+    </div>
+
+
+
+
+    <%- include('./partials/footer') %>

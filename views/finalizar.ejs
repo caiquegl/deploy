@@ -1,0 +1,85 @@
+<%- include('./partials/header') %>
+
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="pag">
+                    <div class="row">
+                        <h1>Selecione uma forma de pagamento</h1>
+                        <img src="img/dinheiro-icon.png" class="din">
+                    </div>
+                    <div class="row">
+                        <img src="img/cartaoDeCredito.png" alt="Cartão de credito">
+                        <img src="img/boleto.png" alt="Boleto">
+                    </div>
+                    <div class="row">
+                        <button type="button" data-toggle="modal" data-target=".bd-example-modal-lg">Selecionar</button>
+                        <button type="button" data-target=".bd-example-modal-lg" >Selecionar</button>
+                        <!-- Modal -->
+                        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                              <div class="modal-content">
+                                <form action="/finalizar" method="post">
+
+                                <h2>Selecione seu cartão</h2>
+                                <div class="row">
+                                    <div class="cartaoPai">
+                                            <label for="cartao">Digite o numero do seu cartao:</label>
+                                            <br>
+                                            <input type="text" aria-label="Checkbox for following text input" maxlength="19" name="cartao"onkeypress="$(this).mask('####.####.####.####')">
+                                            <br>
+                                            <label for="validade">Digite sua validade:</label>
+                                            <br>
+                                            <input type="text" aria-label="Checkbox for following text input" maxlength="4" name="validade"onkeypress="$(this).mask('####')">
+                                            <br>
+                                            <label for="cvc">Digite cvc</label>
+                                            <br>
+                                            <input type="text" aria-label="Checkbox for following text input" maxlength="3" name="cvc"onkeypress="$(this).mask('###')"> 
+                                            <br>
+                                            <label for="cvc">Digite o nome impresso no cartao</label>
+                                            <br>
+                                            <input type="text" aria-label="Checkbox for following text input"  name="nome"onkeypress="$(this).mask('###')"> 
+                                        
+                                            
+                                    </div>
+                                    <div class="parcelamento">
+                                        <h5>Selecione a forma de pagamento</h5>
+                                        <ul>
+                                            <li><input type="radio" id="avistaP" name="formaPagamento" value="á vista, <%= soma+20 %>,00" onclick="avista()">Á vista <strong>R$<%= soma+20 %>,00</strong></li>
+                                            <li><input type="radio" id="avistaD" name="formaPagamento" value="2x no cartão, <%= Math.round((soma+20) / 2) %>,00" onclick="duas()">2x <strong>R$<%= Math.round((soma+20) / 2) %>,00</strong></li>
+                                            <li><input type="radio" id="avistaT" name="formaPagamento" value="3x no cartão, <%= Math.round((soma+20) / 3) %>,00" onclick="tres()">3x <strong>R$<%= Math.round((soma+20) / 3) %>,00</strong></li>
+                                            <li><input type="radio" id="avistaQ" name="formaPagamento" value="4x no cartão, <%= Math.round((soma+20) / 4) %>,00" onclick="quatro()">4x <strong>R$<%= Math.round((soma+20) / 4) %>,00</strong></li>
+                                            <li><input type="radio" id="avistaC" name="formaPagamento" value="5x no cartão, <%= Math.round((soma+20) / 5) %>,00" onclick="cinco()">5x <strong>R$<%= Math.round((soma+20) / 5) %>,00</strong></li>
+                                            <li><input type="radio" id="avistaS" name="formaPagamento" value="6x no cartão, <%= Math.round((soma+20) / 6) %>,00" onclick="seis()">6x <strong>R$<%= Math.round((soma+20) / 6) %>,00</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <button type="button" class="button-modal" data-dismiss="modal">Confirmar</button>
+                              </div>
+                              </form>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="finalizar">
+                    <form action="/finalizar" method="post">
+                        <input type="text" id="pagamento" name="forma_de_pagamento" style="display: none;" readonly value="teste">
+                    <h2>Boas compras :)</h2>
+                        <button type="submit">Finalizar</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="container regras">
+            <div>
+                <p>O preço e a disponibilidade dos produtos  estão sujeitos a alterações. O carrinho de compras é um local temporário para armazenar uma lista de seus produtos e reflete o preço mais atualizado de cada um deles.</p>
+        
+                <p>Você tem um cartão-presente ou um código promocional? Solicitaremos que você insira seu código de reivindicação quando for a hora de pagar.</p>
+            </div>
+        </div>
+
+    </main>
+    <%- include('./partials/footer') %>

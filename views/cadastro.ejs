@@ -1,0 +1,77 @@
+<%- include('./partials/header') %>
+<main>
+  <div class="container">
+    <div class="cadastro">
+      <form method="post" action="/registro">
+        <h2>Cadastre-se</h2>
+
+        <% if( typeof msg !== 'undefined') {%>
+        <div class="alert alert-info" role="alert">
+
+          <%= msg %>
+        </div>
+
+        <% } %>
+
+
+        <% if( typeof errors !== 'undefined') {%>
+            
+            <ul>
+              <% errors.forEach(error=>{ %>
+                <div class="alert alert-info" role="alert">Por favor verifique os dados!</div>
+                <li style="list-style: none;" class=" alert alert-danger" ><%= error.msg %> </li>
+            <%  }) %> 
+            </ul>
+        <% } %>
+
+        <h4>preecha o formulario abaixo</h4>
+
+
+        <div class="row">
+          <div class="left">
+            <label for="inputEmail4">Email:</label>
+            <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email" class="email"
+              required>
+            <label for="inputPassword4">Senha:</label>
+            <input required name="password" type="password" class="form-control" id="inputPassword4"
+              placeholder="Senha">
+            <label for="inputEmail4">CPF:</label>
+            <input required name="CPF" type="text" maxlength="14" class="form-control" id="inputEmail4"
+              placeholder="CPF" onkeypress="$(this).mask('###.###.###-##')">
+          </div>
+          <div class="rigth">
+            <label for="inputPassword4">Nome completo:</label>
+            <input required name="nome" type="text" class="form-control" id="inputPassword4"
+              placeholder="Nome completo">
+
+            <label for="inputPassword4">Data de nascimento:</label>
+            <input name="nascimento" type="date" class="form-control" id="inputPassword4" placeholder="DD/MM/AAAA">
+          </div>
+        </div>
+        <div class="row">
+          <div class="left">
+            Sexo:
+            <br>
+            <input type="checkbox" name="sexo" value="0" id="sexo">
+            <label for="sexo">Feminino</label>
+            <input type="checkbox" name="sexo" value="1" id="sexo">
+            <label for="sexo">Masculino</label>
+
+          </div>
+          <div class="rigth">
+            Deseja receber ofertas pelo email?
+            <br>
+            <input type="checkbox" name="ofertas" value="1" id="ofertas">
+            <label for="ofertas">Sim</label>
+            <input type="checkbox" name="ofertas" value="0" id="ofertas">
+            <label for="ofertas">Não</label>
+          </div>
+        </div>
+        <button type="submit" class="btn">Finalizar Cadastro</button>
+
+
+      </form>
+    </div>
+  </div>
+</main>
+<%- include('./partials/footer') %>

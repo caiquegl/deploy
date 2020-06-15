@@ -1,0 +1,98 @@
+<%- include('./partials/header') %>
+
+
+    <main class="container mapa">
+        <h1>Mapa de estudos</h1>
+        <div class="fil-map">
+            <h3>Filtros</h3>
+            <div class="row">
+                <div class="col-6 fil-left">
+                    <form action="/mapa" method="post">
+                    <p>Tipos de ambientes que gostaria de estudar:</p>
+                    <select class="form-control" id="exampleInputCountry" name="tipoLocal">
+                        <option value="" selected="selected">Selecione um tipo</option>
+                        <option value="cafeteria">Cafeteria</option>
+                        <option value="biblioteca">Biblioteca</option>
+                        <option value="ar-livre">Ao ar livre</option>
+                        <option value="cybework">Cybwork</option>
+                        <option value="cooworking">Cooworking</option>
+                        <option value="centro-cultural">Centro Culturais</option>
+                        <option value="sesc">Sesc</option>
+                    </select>
+                    <!-- <label for="locais-proximos">Gostaria de verificar os pontos mais proximos pelo seu endereço cadastrado ?</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="local-proximo-sim" id="local-proximo-sim" value="local-proximo-sim" checked>
+                        <label class="form-check-label" for="local-proximo-sim">Sim</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="local-proximo-nao" id="local-proximo-nao" value="local-proximo-nao">
+                        <label class="form-check-label" for="local-proximo-nao">Não</label>
+                    </div>                                      -->
+                </div>
+                <div class="col-6 map-rigth">
+                    <p>Precisa de algum dos itens abaixo?</p>
+                    <div class="row">
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="wifi" id="wifi" value="1">
+                                <label class="form-check-label" for="wifi">Wi-fi</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="livro" id="livros" value="1">
+                                <label class="form-check-label" for="livros">Livros</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="cafeteria" id="cafeteria" value="1">
+                                <label class="form-check-label" for="cafeteria">cafeteria</label>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="mesas" id="mesas" value="1">
+                                <label class="form-check-label" for="mesas">Mesas</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="computadores" id="computadores" value="1">
+                                <label class="form-check-label" for="computadores">Computadores</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="tomadas" id="Tomadas" value="1">
+                                <label class="form-check-label" for="Tomadas">Tomadas</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="subMap">Pesquisar</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+            <% if(typeof achado === 'undefined') {%>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14624.191902814306!2d-46.6753419!3d-23.6026123!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x739f0ddb0439cf94!2sDigital%20House%20S%C3%A3o%20Paulo!5e0!3m2!1spt-BR!2sbr!4v1586821169639!5m2!1spt-BR!2sbr" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+            <% }else{ %> 
+
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14624.191902814306!2d-46.6753419!3d-23.6026123!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x739f0ddb0439cf94!2sDigital%20House%20S%C3%A3o%20Paulo!5e0!3m2!1spt-BR!2sbr!4v1586821169639!5m2!1spt-BR!2sbr" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+
+                <% achado.forEach(element => { %>
+                     
+               
+                <h1 id="map-locais-left">LOCAIS ENCONTRADOS:</h1>
+
+
+                    <div class="row locais">
+                        <h1><%= element.nome %></h1>
+                        <p> <%= element.endereco %> </p>
+                        <!-- <button type="submit">Convidar pessoas</button> -->
+                        <hr>
+                    </div>
+                    <% }) %> 
+
+             <% } %> 
+
+
+        </div>
+
+    </main>
+    <%- include('./partials/footer') %>

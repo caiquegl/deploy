@@ -1,0 +1,24 @@
+<%- include('./partials/header') %>
+
+    <main>
+        <div class="container">
+               <div class="login">
+                <h2>Login</h2>
+                <% if( typeof msg !== 'undefined') {%>
+                  <div class="alert alert-secondary" role="alert">
+                    <%= msg %>
+                  </div>
+                  <% } %>
+                <form action="/login" method="POST">
+                  <label for="login">Login:</label>
+                    <input class="form-control" type="text" placeholder="Nome do usuario" name="email">
+                    <label for="senha">Senha:</label>
+                    <input class="form-control" type="password" placeholder="Digite a senha" name="password">
+                    <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#exampleModalCenter">Entrar</button>
+                    <a href="#" class="txt">Esqueci a senha</a>
+                    
+                </form>
+               </div>
+        </div>
+    </main>
+    <%- include('./partials/footer') %>

@@ -1,0 +1,49 @@
+<%- include('./partials/header') %>
+
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="infoProduto">
+                <div class="row">
+                    <% infoProduto.forEach(element => {%> 
+
+                    <img src="/foto/<%= element.foto %>" alt="Produto">
+                    <div class="text">
+                        <h2><%= element.nome_produto %></h2>
+                        <p><%= element.descricao %>
+                        </p>
+                        <a href="#infoItem">Mais informações</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="frete">
+                <p class="de"> De R$ 34,99</p>
+                <p class="por" onkeypress="$(this).mask('R$ 999.990,00')"> R$ <%= element.valor %>,00</p>
+                <hr>
+                <p class="frete-prazo">Frete fixo para todo o Brasil</p>
+                
+                <hr>
+                <form action="/ecomerce" method="post">
+                    <input type="text" value="<%= element.id_produto %>" style="display: none;" readonly name="id_produto">
+                    <input type="text" value="<%= element.nome_produto %>" style="display: none;" readonly name="nome_produto">
+                    <input type="text" value="<%= element.valor %>" style="display: none;" readonly name="valor_produto">
+                    <input type="text" value="<%= element.descricao %>" style="display: none;" readonly name="descricao_produto">
+                    <input type="text" value="<%= element.foto %>" style="display: none;" readonly name="foto_produto">
+                    <button type="submit" class="btn-comprar">Comprar :) <img src="/img/ecomerce/carrinho.png" class="img"></button>
+                </form>
+               
+                
+            </div>
+            <% }); %>
+
+                <div id="infoItem">
+                    <h1>Informações do produto</h1>
+                    <p>Em seu primeiro livro, Thiago Nigro, criador da plataforma O Primo Rico, ensina aos leitores os três pilares para atingir a independência financeira: gastar bem, investir melhor e ganhar mais. Por meio de dados e de sua própria experiência como investidor e assessor, Nigro mostra que a riqueza é possível para todos – basta estar disposto a aprender e se dedicar.</p>
+                </div>
+       </div>
+    </div>
+</main>
+
+<%- include('./partials/footer') %>

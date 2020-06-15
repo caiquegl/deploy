@@ -1,0 +1,99 @@
+<%- include('./partials/header') %>
+
+    <div class="container pai-produtos">
+        <div class="add-item">
+            
+            <form action="/paginaAdmin" method="post" enctype="multipart/form-data">
+                <h2>Adicionar produto</h2>
+                <div class="form-group">
+                    <label for="nome_produto">
+                        Nome do produto:
+                    </label>
+                    <input type="text" name="nome_produto" placeholder="Nome do produto">
+                </div>
+               
+                <div class="form-group">
+                    <label for="valor">
+                        Valor do produto
+                    </label>
+                    <input name="valor" onkeypress="$(this).mask('R$ #.###.00', {reverse: true})" type="text" placeholder="$1,000,000.00"/>
+                </div>
+                <div class="form-group">
+                    <label for="descricao">
+                        Descrição do produto:
+                    </label>
+                    <textarea name="descricao" placeholder="Breve descrição"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="foto">Example file input</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="foto">
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoria do produto:</label>
+                    <select class="form-control" id="exampleInputCountry" name="categoria">
+                      <option value="" selected="selected">Selecione uma categoria</option>
+                      <option value="1">Livro - Matemática</option>
+                      <option value="2">Livro - Português</option>
+                      <option value="3">Livro - Inglês</option>
+                      <option value="4">Livro - Geografia</option>
+                      <option value="5">Livro - História</option>
+                      <option value="6">Livro - Física</option>
+                      <option value="7">Livro - Química</option>
+                      <option value="8">Livro - Aulas gerais</option>
+                      <option value="9">Livro - Concurso Público</option>
+                      <option value="10">Livro - Vestibulando</option>
+                      <option value="11">Curso - Matemática</option>
+                      <option value="12">Curso - Português</option>
+                      <option value="13">Curso - Inglês</option>
+                      <option value="14">Curso - Geografia</option>
+                      <option value="15">Curso - História</option>
+                      <option value="16">Curso - Física</option>
+                      <option value="17">Curso - Química</option>
+                      <option value="18">Curso - Aulas gerais</option>
+                      <option value="19">Curso - Concurso público</option>
+                      <option value="20">Curso - vestibulando</option>
+                      <option value="21">Material - Mochila</option>
+                      <option value="22">Material - Caderno</option>
+                      <option value="23">Material - Lápis</option>
+                      <option value="24">Material - Borracha</option>
+                      <option value="25">Material - Utilidades</option>
+                      <option value="26">Material - estojo</option>
+                      <option value="27">Material - Canetas</option>
+                    </select>
+                </div>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+
+
+
+        <div class="vendidos">
+            <h2>Itens vendidos</h2>
+            <ul>
+                <% produtos.forEach(element => {%> 
+
+                    <li>
+                        <div>
+                            <form action="/paginaAdminR" method="post">
+                                <input type="text" name="id_produto" value="<%= element.id_produto %>" style="display: none;" readonly>
+
+                            Nome do produto: <strong><%= element.nome_produto %></strong> | Codígo do produto: <strong><%= element.id_produto %></strong>| Valor do produto: <strong>R$ <%= element.valor %>,00</strong>
+                                    <button class="remove_carrinho" type="submit" >Remover produto</button>
+                            </form>
+
+                        </div>
+                        <hr>
+                    </li>
+
+                <% }); %>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+
+    
+    <%- include('./partials/footer') %>
