@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const session = require("express-session");
+var cors = require('cors')
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -14,7 +15,7 @@ var usersRouter = require("./routes/users");
 var app = express();
 
 
-
+app.use(cors())
 
 
 
