@@ -139,6 +139,16 @@ const pedidoController = {
                       id_usuario: id,
                     } 
                   })
+
+                  count = await carrinhos.count({
+                    where: {
+                      id_usuario: id
+                    }
+                  })
+          
+                  req.session.count = {
+                    count: count,
+                  };
                     // for (let i = 0; i < quantItens; i++) {
 
                     //     carrinhosDb.forEach(async element => {
