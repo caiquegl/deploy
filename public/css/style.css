@@ -18,6 +18,12 @@
   }
 /* scroll */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap');
+
+.foot-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 body{
     margin: 0;
     padding: 0;
@@ -100,6 +106,7 @@ header .nav-link{
 
 /* header */
 footer{
+    position: initial;
     background-color: #2F2E2E;
 }
 footer img{
@@ -315,6 +322,7 @@ form .btn-primary {
     border-radius: 5px;
     margin-bottom: 50px;
     box-shadow: 7px 7px 2px 1px rgba(0, 0, 0, 0.2);
+    height: auto;
 
 }
 .filter h3{
@@ -360,12 +368,14 @@ form .btn-primary {
 }
 .produtos-pai{
     width: 900px;
+    max-height: 1000px;
     margin-top: 40px;
     margin-bottom: 50px;
-    max-height:1000px;
-    /* overflow-y: auto;
-    overflow-x: hidden; */
+    overflow: auto;
     
+}
+.ecomerce{
+    max-height: 100%;
 }
 .produtos{
     background-color: #5D8E9E;
@@ -616,6 +626,8 @@ article .right{
     box-shadow: 7px 7px 2px 1px rgba(0, 0, 0, 0.2);
     height: 160px;
     margin-bottom: 40px;
+    width: 1200px;
+    max-width: 1200px;
 }
 #infoItem h1{
     text-align: left;
