@@ -55,7 +55,12 @@
                                         </ul>
                                     </div>
                                 </div>
+                                
+                                    
+
                                 <button type="button" class="button-modal" data-dismiss="modal">Confirmar</button>
+                                
+
                               </div>
                               </form>
                             </div>
@@ -66,8 +71,13 @@
                 <div class="finalizar">
                     <form action="/finalizar" method="post">
                         <input type="text" id="pagamento" name="forma_de_pagamento" style="display: none;" readonly value="teste">
-                    <h2>Boas compras :)</h2>
+                        <% if(msg.length > 15) {%>
+                            <div class="alert alert-info">Endereço não cadastrado</div>
+                    <% }else { %>
+                        <h2>Boas compras :)</h2>
+
                         <button type="submit">Finalizar</button>
+                        <% } %>
                     </form>
 
                 </div>

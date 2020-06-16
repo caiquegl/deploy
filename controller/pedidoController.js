@@ -10,6 +10,8 @@ const pedidoController = {
   finalizar: async (req, res) => {
 
     const id = req.session.usuario.id;
+    const end = req.session.usuario.id_endereco;
+
 
 
     let varTotal = await carrinhos.findAll(
@@ -31,9 +33,15 @@ const pedidoController = {
       
     });
 
-    console.log(descri);
+    let msg;
+    if(end > 0){
+      msg = "Boas Compras :)"
+    } else{
+      msg = "Cadastre seu endereço antes..."
+    }
 
-      return res.render("finalizar", {usuario: req.session.usuario, quantItens: req.session.count, title:'Finalizar pedido', soma, descri});
+
+      return res.render("finalizar", {usuario: req.session.usuario, quantItens: req.session.count, title:'Finalizar pedido', soma, descri, msg});
   },
     storePedido: async(req,res)=>{
         const id = req.session.usuario.id;
