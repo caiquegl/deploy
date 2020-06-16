@@ -1,10 +1,11 @@
+require('dotenv').config();
 
 module.exports = {
-  username: "e6tuthesisox9xln",
-  password: "p44bqak2v7efuviv",
-  database: "yxpgjxkfw5w7beds",
-  host: "r4919aobtbi97j46.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-  dialect: "mysql",
-  port: 3306,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  host: process.env.DB_HOST,
+  dialect: process.env.DB_DIALECT,
+  port: process.env.DB_PORT,
  
 }
