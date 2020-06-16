@@ -4,8 +4,6 @@ function getNoticias() {
 
     
 
-
-
     fetch("https://newsapi.org/v2/top-headlines?country=br&category=science&apiKey=fd67ec332bed40ecab3e342590423cc7")
     .then(function (resultado){
         return resultado.json()
