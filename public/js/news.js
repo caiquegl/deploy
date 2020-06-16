@@ -1,5 +1,3 @@
-const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('f8600ee8504b461daaa7aa623d07f265');
 
 
 function getNoticias() {
