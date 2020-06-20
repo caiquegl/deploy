@@ -21,7 +21,7 @@ function getNoticias() {
             <div class="container news">
             <a href="${noticia.url}">
                 <img src="${noticia.urlToImage}" alt="Notícias enem">
-                <div>
+                <div class="text-news">
                     <h2>
                     ${noticia.title}
                     </h2>

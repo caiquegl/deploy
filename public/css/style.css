@@ -1705,6 +1705,22 @@ border-radius: 5px;
         width: 100vw;   
             
     }
+    .news{
+        display: block;
+        height: auto;
+        flex-wrap: nowrap;
+    }
+    .news a{
+        max-height: 250px;
+    }
+    .news .text-news h2{
+        max-height: 500px;
+        width: 70vw;
+    }
+    .news .text-news h4{
+        max-height: 500px;
+        width: 70vw;
+    }
             /* loja virtual */
 
             .pag img{
@@ -1725,6 +1741,7 @@ border-radius: 5px;
     }
     .map-rigth{
         padding-left: 20px;
+    
 }
 
 @media (max-width: 400px){
@@ -1784,4 +1801,12 @@ border-radius: 5px;
 .form-compra{
     width: 100%;
     margin-left: 20px;
+}
+.btn-a{
+    border: none;
+    background-color: #a2c9d6;
+}
+.btn-a:hover{
+    text-decoration: underline;
+    color: darkslategray;
 }

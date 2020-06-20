@@ -9,15 +9,55 @@
                     <%= msg %>
                   </div>
                   <% } %>
+                  <% if( typeof msgRecu !== 'undefined') {%>
+                    <div class="alert alert-secondary" role="alert">
+                      <%= msgRecu %>
+                    </div>
+                    <% } %>
                 <form action="/login" method="POST">
                   <label for="login">Login:</label>
                     <input class="form-control" type="text" placeholder="Nome do usuario" name="email">
                     <label for="senha">Senha:</label>
                     <input class="form-control" type="password" placeholder="Digite a senha" name="password">
                     <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#exampleModalCenter">Entrar</button>
-                    <a href="#" class="txt">Esqueci a senha</a>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn-a " data-toggle="modal" data-target="#exampleModal">
+                     <p>Esqueci a senha</p>
+                    </button>                   
                     
                 </form>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Esqueci a senha</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="/recuSenha" method="post">
+
+                          <div class="form-group">
+                            <label for="email">
+                              Digite o email cadastrado:
+                            </label>
+                            <input type="email" name="email" class="form-control">
+                          </div>
+                         
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+                      </div>
+                    </form>
+
+                    </div>
+                  </div>
+                </div>
                </div>
         </div>
     </main>

@@ -63,6 +63,31 @@ const autentificacao = {
     
       
     },
+    recuSenha: async (req,res) =>{
+      const { email} = req.body;
+
+      const [recu] = await usuarios.findAll({
+          
+        where: {
+          email,
+        }     
+    });
+    console.log(recu);
+
+    if (recu) {
+      return res.render("login", {
+        msgRecu: "Email enviado com nova senha de acesso!!",
+      });
+    
+    }else{
+      return res.render("login", {
+        msg: "Email não cadastrado!",
+      });
+    
+    }
+
+
+    },
 }
 
 module.exports = autentificacao;

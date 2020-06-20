@@ -69,6 +69,9 @@ router.get('/paginaAdmin', autenController.validando, bodyController.paginaAdmin
 router.post('/paginaAdmin', upload.any() ,produtosController.storeProduto);
 router.post('/paginaAdminR',produtosController.remove);
 
+router.post('/recuSenha',autenController.recuSenha);
+
+
 
 
 
