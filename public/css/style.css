@@ -1878,3 +1878,9 @@ border-radius: 5px;
     text-decoration: underline;
     color: darkslategray;
 }
+.dropdown{
+    height: 35px;
+    border-radius: 5px;
+    border: 1.5px solid gray;
+    background-color: #eeeeee;
+}

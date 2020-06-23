@@ -145,16 +145,12 @@
     <div class="ordenar">
       <div class="row">
         <p class="ordernar-seletor">Categoria > seletor > produtos encontrados</p>
-        <div class="dropdown ">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Ordernar por:
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-           <a href="ecomerce/up"> Preço maior ao menor </a>
-           <a href="ecomerce/down"> Preço menor ao maior </a>
-          </div>
-        </div>
+        
+          <select class="dropdown" onchange="location = this.value;">
+            <option selected>Ordenar por:</option>
+            <option value="/ecomerce/up"> Preço maior ao menor </option>
+           <option value="/ecomerce/down"> Preço menor ao maior </option>
+          </select>
       </div>
 
       <nav aria-label="Page navigation example">
