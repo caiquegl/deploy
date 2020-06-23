@@ -16,14 +16,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      latitude: {
-        type: Sequelize.FLOAT(10, 6),
-        allowNull: false,
-      },
-      longitude: {
-        type: Sequelize.FLOAT(10, 6),
-        allowNull: false,
-      },
       tipo: {
         type: Sequelize.STRING,
         allowNull: false,
