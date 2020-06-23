@@ -1,7 +1,7 @@
 const multer = require("multer");
 const path = require("path");
 
-// Criando um storage que é pra dizer onde  deverá ser salvo os arquivos e com qual nome
+// Criando um storage que é pra dizer onde  deverá ser salvo os arquivos e com qual nome testando
 const storage = multer.diskStorage({
   // definindo onde será salvo o arquivo
   destination: function (req, file, cb) {
